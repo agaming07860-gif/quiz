@@ -1,0 +1,110 @@
+const quizData = [
+  {
+    question: "1. What is the SI unit of Electric Charge?",
+    options: ["Volt", "Coulomb", "Ampere", "Ohm"],
+    correct: 1
+  },
+  {
+    question: "2. The force between two static point charges is governed by which law?",
+    options: ["Ohm's Law", "Coulomb's Law", "Gauss's Law", "Faraday's Law"],
+    correct: 1
+  },
+  {
+    question: "3. What is the direction of an Electric Field around a positive charge?",
+    options: ["Radially Outwards", "Radially Inwards", "Circular", "Zero"],
+    correct: 0
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let selectedOption = null;
+let timeLeft = 120; // 2 minutes in seconds
+let timerInterval;
+
+const questionText = document.getElementById("question-text");
+const optionsContainer = document.getElementById("options-container");
+const nextBtn = document.getElementById("next-btn");
+const timerElement = document.getElementById("timer");
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    timerElement.textContent = `Time Left: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      finishQuiz();
+    }
+  }, 1000);
+}
+
+function loadQuestion() {
+  selectedOption = null;
+  const q = quizData[currentQuestion];
+  questionText.textContent = q.question;
+  optionsContainer.innerHTML = "";
+
+  q.options.forEach((opt, index) => {
+    const li = document.createElement("li");
+    li.className = "option-item";
+    li.textContent = opt;
+    li.onclick = () => selectOption(li, index);
+    optionsContainer.appendChild(li);
+  });
+
+  if (currentQuestion === quizData.length - 1) {
+    nextBtn.textContent = "Submit Test";
+  } else {
+    nextBtn.textContent = "Next Question";
+  }
+}
+
+function selectOption(element, index) {
+  document.querySelectorAll(".option-item").forEach(el => el.classList.remove("selected"));
+  element.classList.add("selected");
+  selectedOption = index;
+}
+
+function nextQuestion() {
+  if (selectedOption === null) {
+    alert("Please select an option before proceeding!");
+    return;
+  }
+
+  if (selectedOption === quizData[currentQuestion].correct) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < quizData.length) {
+    loadQuestion();
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz() {
+  clearInterval(timerInterval);
+  document.getElementById("quiz-screen").classList.add("hidden");
+  document.getElementById("result-screen").classList.remove("hidden");
+  document.getElementById("final-score").textContent = `Your Score: ${score} / ${quizData.length}`;
+  document.getElementById("user-rank-score").textContent = `${score} / ${quizData.length}`;
+}
+
+function restartQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  timeLeft = 120;
+  document.getElementById("result-screen").classList.add("hidden");
+  document.getElementById("quiz-screen").classList.remove("hidden");
+  startTimer();
+  loadQuestion();
+}
+
+// Start Quiz
+loadQuestion();
+startTimer();
