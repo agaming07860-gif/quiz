@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PrepPortal - Online Quiz & Test Series</title>
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="quiz-container">
+    <!-- Quiz Screen -->
+    <div id="quiz-screen">
+      <div class="header">
+        <h2>Physics: Class 12 - Chapter 1</h2>
+        <div class="timer" id="timer">Time Left: 02:00</div>
+      </div>
+
+      <div class="question-title" id="question-text">Loading question...</div>
+
+      <ul class="options-list" id="options-container">
+        <!-- Options injected dynamically -->
+      </ul>
+
+      <button class="btn" id="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <!-- Result & Leaderboard Screen -->
+    <div id="result-screen" class="result-screen hidden">
+      <h2>Test Completed!</h2>
+      <div class="score-box" id="final-score">Your Score: 0/0</div>
+
+      <div class="leaderboard">
+        <h3>Class Leaderboard</h3>
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body">
+            <tr><td>1</td><td>Rahul Sharma</td><td>3/3</td></tr>
+            <tr><td>2</td><td>Ananya Verma</td><td>2/3</td></tr>
+            <tr><td>3</td><td>You</td><td id="user-rank-score">0/3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn" onclick="restartQuiz()">Try Again</button>
+    </div>
+  </div>
+
+  <!-- Link to JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
