@@ -1,0 +1,52 @@
+{
+  "classes": [
+    {
+      "classId": "10th",
+      "className": "Class 10th",
+      "subjects": [
+        {
+          "subjectName": "Science",
+          "chapter": "Light - Reflection and Refraction",
+          "questions": [
+            {
+              "id": 1,
+              "question": "Which type of mirror is used as a rear-view mirror in vehicles?",
+              "options": ["Plane Mirror", "Concave Mirror", "Convex Mirror", "Cylindrical Mirror"],
+              "correct": 2
+            },
+            {
+              "id": 2,
+              "question": "The focal length of a spherical mirror is 20 cm. What is its radius of curvature?",
+              "options": ["10 cm", "20 cm", "40 cm", "5 cm"],
+              "correct": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "classId": "12th",
+      "className": "Class 12th",
+      "subjects": [
+        {
+          "subjectName": "Physics",
+          "chapter": "Electric Charges and Fields",
+          "questions": [
+            {
+              "id": 1,
+              "question": "What is the SI unit of Electric Charge?",
+              "options": ["Volt", "Coulomb", "Ampere", "Ohm"],
+              "correct": 1
+            },
+            {
+              "id": 2,
+              "question": "The force between two static point charges is governed by which law?",
+              "options": ["Ohm's Law", "Coulomb's Law", "Gauss's Law", "Faraday's Law"],
+              "correct": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
